@@ -354,7 +354,6 @@ _.extend(Mongo.prototype, {
   findAndModify: function(collectionName, query, obj) {
     var args = [].slice.call(arguments);
     var callback = typeof args[args.length - 1] == 'function' && args.pop();    
-    var options = typeof args[args.length - 1] == 'object' && args.pop();
     var options = args.length > 3 && typeof args[args.length - 1] == 'object' && args.pop();
 
     query = this.cast(query);
