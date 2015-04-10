@@ -528,6 +528,13 @@ _.extend(Mongo.prototype, {
         if(callback) { callback(err); }
         throw err;
       });
-  }
+  },
 
+  close: function() {
+    this.connection = "disconnected";
+    return Promise
+      .fromNode(function (done) {
+        this._db.close(done);
+      }.bind(this));
+  }
 });
